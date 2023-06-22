@@ -9,38 +9,53 @@ int main()
 
     while(t--)
     {
-        long long n,k, mx = 0;
+        long long n,k, mx;
         cin >> n >> k;
+        vector<int> b(n);
+        vector<bool> taken(1001, false);
 
-        vector<long long>v(n);
-        unordered_map<long long,bool>mp;
-
-        for(int i = 0; i<n ;i++)
-            cin >> v[i];
+        for(int i= 0; i<n; i++)
+            cin >> b[i];
 
         for(int i = 0; i<n; i++)
-        {
-            cin >> v[i];
-            mp[v[i]] = true;
-            mx = max(mx, v[i]);
-        }
+            taken[b[i]] = true;
 
-        long long p = 1;
+        mx = *max_element(b.begin(), b.end());
 
-        while(k > 0)
+        int sum = 0;
+        bool ok = false;
+
+        int cur = 1;
+        while(true)
         {
-            while(mp[v[p]] == true)
+            if(taken[cur])
             {
-                p++;
+                cur++;
+                continue;
             }
+            sum+=cur;
+            taken[cur] = true;
 
-            k = k - p;
-            mx = max(mx, p);
-            mp[p] = true;
-            p = p+1;
+            if(sum == k)
+            {
+                bool imp = false;
+                for(int i = cur; i<=mx; i++)
+                {
+                    if(!taken[i])
+                    {
+                        imp = true;
+                        break;
+                    }
+                }
+                if(!imp) ok = true;
+
+                break;
+            }
+            cur++;
+
+            if(sum > k) break;
         }
-
-        if(k== 0 && mp.size() == mx) cout << "YES" << endl;
+        if(ok) cout << "YES" << endl;
         else cout << "NO" << endl;
 
     }
