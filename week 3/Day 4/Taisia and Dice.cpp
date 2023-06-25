@@ -9,21 +9,23 @@ int main()
 
     while(t--)
     {
-        int n, s, r, sum = 0;
+        int n, s, r;
         cin >> n >> s >> r;
 
-        for(int i = 0; i<n-2;i++)
+        int val = s-r;
+
+        cout << val << " ";
+
+        for(int j = 2; j<=n; j++)
         {
-            cout << 1 << " ";
-            sum ++;
+            while(r-val < n-j)
+            {
+                val--;
+            }
+
+            cout << val << " ";
+            r -= val;
         }
-
-        int x = s - r;
-        int y = s- x - sum;
-
-        cout << x << " " << y << endl;
-
-
-
+        cout << endl;
     }
 }
