@@ -11,39 +11,27 @@ int main()
     {
         int n;
         cin >> n;
-        vector<long long>v(n);
+
+        vector<int>v(n);
+        map<int, int> mp;
+        set<int>s;
 
         for(int i = 0; i<n; i++)
+        {
             cin >> v[i];
-
-        sort(v.begin(), v.end());
-        reverse(v.begin(), v.end());
-
-        vector<pair<long long, long long>>b;
-        int j;
-        for(int i = 0; i<n; )
-        {
-            j = i;
-            while(i < n && v[i] == v[j])
-            {
-                i++;
-            }
-            b.push_back({v[j], i-j});
+            mp[v[i]]++;
+            s.insert(v[i]);
+            s.insert(v[i]+1);
         }
+        int track = 0;
+        int res = 0;
 
-        long long ans = b[0].second;
-
-        for(int i = 1; i<b.size(); i++)
+        for(auto x : s)
         {
-            if(b[i].first+1 == b[i-1].first)
-            {
-                ans += max((long long)0, b[i-1].second - b[i].second);
-
-            }else
-            {
-                ans += b[i].second;
-            }
+            int c = mp[x];
+            res += max(0, c - track);
+            track = c;
         }
-        cout << ans << endl;
+        cout << res << endl;
     }
 }
