@@ -29,7 +29,7 @@ int main()
         int i = 0;
         while(i< n)
         {
-            if(k >= v[i].first && b[i] == false)
+            if(k >= v[i].second && b[i] == false)
             {
                 k+= v[i].first;
                 b[i] = true;
