@@ -2,7 +2,7 @@
 
 using namespace std;
 
-max_min(int n)
+pair<int, int>max_min(int n)
 {
     string s = to_string(n);
     int a = 0;
@@ -12,7 +12,7 @@ max_min(int n)
         a = max(a, (int)s[i]);
         b = min(b, (int)s[i]);
     }
-    return (a, b);
+    return {a, b};
 }
 
 int main()
