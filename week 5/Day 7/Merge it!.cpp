@@ -12,41 +12,19 @@ int main()
         int n;
         cin >> n;
 
-        vector<int>v(n);
+        int arr[5] = {0};
 
-        for(int i = 0; i<n; i++)
-            cin >> v[i];
-
-        map<int, bool>mp;
-
-        int ans = 0;
         for(int i = 0; i<n; i++)
         {
-            if(v[i] % 3 == 0)
-            {
-                ans++;
-                continue;
-            }
+            int x;
+            cin >> x;
 
-            for(int j = i+1; j<n; j++)
-            {
-                long long sum = v[i];
-                if(mp[j] == false)
-                {
-                    sum += v[j];
-                    mp[j] = true;
-                }
-                if(sum % 3 == 0 )
-                {
-                    ans++;
-                    mp[i] = true;
-                    mp[j] = true;
-                }
-
-                if(sum > 3)
-                    break;
-            }
+            arr[x%3]++;
         }
-        cout << ans << endl;
+
+        int m = min(arr[1], arr[2]);
+
+        cout << arr[0] + m + (arr[1] - m)/3 + (arr[2]-m)/3 << endl;
+
     }
 }
