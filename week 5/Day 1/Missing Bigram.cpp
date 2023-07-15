@@ -12,11 +12,11 @@ int main()
         int n;
         cin >> n;
 
-        string s[n];
+        vector<string>v(n-1);
 
         for(int i = 0; i< n-2; i++)
         {
-            cin >> s[i];
+            cin >> v[i];
         }
 
 
@@ -24,9 +24,11 @@ int main()
         string ans;
         for(int i = 0; i<n-3; i++)
         {
-            if(s[i][1] != s2[i+1][0])
+            string s1 = v[i];
+            string s2 = v[i+1];
+            if(s1[1] != s2[0])
             {
-                ans += s[i][1];
+                ans += s1[1];
                 ans += s1[1];
                 found = true;
             }else
@@ -37,7 +39,7 @@ int main()
 
         if(!found)
         {
-            ans += v[n-3];
+             ans += v[n-3];
             ans += "a";
             cout << ans << endl;
         }else
