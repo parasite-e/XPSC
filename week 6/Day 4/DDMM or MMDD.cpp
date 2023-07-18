@@ -11,7 +11,6 @@ int main()
     {
         string s;
         cin >> s;
-        cout << s[0] << " " << s[1] << endl;
         string f = s.substr(0, 2);
         string s1 = s.substr(3,2);
 
