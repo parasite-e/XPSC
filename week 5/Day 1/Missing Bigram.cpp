@@ -12,40 +12,31 @@ int main()
         int n;
         cin >> n;
 
-        vector<string>v(n-1);
+        string s[n+4];
 
-        for(int i = 0; i< n-2; i++)
+        for(int i = 0;i<n-2; i++)
+            cin >> s[i];
+
+        string ans = s[0];
+        int c = 0;
+
+        for(int i = 1; i<n-2; i++)
         {
-            cin >> v[i];
-        }
+            int x = ans.size() -1;
 
-
-        bool found = false;
-        string ans;
-        for(int i = 0; i<n-3; i++)
-        {
-            string s1 = v[i];
-            string s2 = v[i+1];
-            if(s1[1] != s2[0])
+            if(ans[x] == s[i][0])
+                ans += s[i][1];
+            else
             {
-                ans += s1[1];
-                ans += s1[1];
-                found = true;
-            }else
-            {
-                ans += s1[0];
+                c = 1;
+                ans += s[i];
             }
         }
 
-        if(!found)
-        {
-             ans += v[n-3];
-            ans += "a";
-            cout << ans << endl;
-        }else
-        {
-            ans += v[n-3];
-            cout << ans << endl;
-        }
+        if(c == 0)
+            ans += 'a';
+
+        cout << ans << endl;
+
     }
 }
