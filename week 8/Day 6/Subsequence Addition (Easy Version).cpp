@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int main() {
     int t;
     cin >> t;
@@ -11,7 +10,7 @@ int main() {
     {
          int n;
         cin >> n;
-        vector<ll> a(n);
+        vector<long long> a(n);
         for (int i = 0; i < n; i++)
         {
             cin >> a[i];
@@ -22,7 +21,7 @@ int main() {
             cout << "NO" << endl;
             continue;
         }
-        ll sum = a[0];
+        long long sum = a[0];
         for (int i = 1; i < n; i++)
         {
             if (a[i] <= sum)

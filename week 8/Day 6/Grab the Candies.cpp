@@ -26,11 +26,12 @@ int main()
     }
     if (even > odd)
     {
-        yes;
+        cout << "YES" <<endl;
+
     }
     else
     {
-        no;
+        cout << "NO" << endl;
     }
     }
 }
