@@ -12,26 +12,35 @@ int main()
         int n;
         cin >> n;
 
-        vector<int>v(n);
-        map<int, int> mp;
-        set<int>s;
+        multiset<int>m;
 
-        for(int i = 0; i<n; i++)
+        for(int i = 0; i<n ; i++)
         {
-            cin >> v[i];
-            mp[v[i]]++;
-            s.insert(v[i]);
-            s.insert(v[i]+1);
-        }
-        int track = 0;
-        int res = 0;
+            int x;
+            cin >> x;
 
-        for(auto x : s)
-        {
-            int c = mp[x];
-            res += max(0, c - track);
-            track = c;
+            m.insert(x);
         }
-        cout << res << endl;
+        int ans = 0;
+        while(!m.empty())
+        {
+            int c = *m.begin();
+
+            while(true)
+            {
+                if(m.find(c+1) == m.end())
+                {
+                    ans++;
+                     m.erase(m.find(c));
+                     break;
+                }
+                else
+                {
+                    m.erase(m.find(c));
+                    c++;
+                }
+            }
+        }
+        cout << ans << endl;
     }
 }
